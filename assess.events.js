@@ -17,7 +17,7 @@ console.originalLog = console.log;
 // replace console.log with a veneer function that updates a global variable
 // with whatever the parameters of the most recent  call to console.log were.
 console.log = function(...x) {
-  console.originalLog(x);
+  console.originalLog(...x);
   window.lastLog = x;
 }
 
