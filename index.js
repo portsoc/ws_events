@@ -35,7 +35,6 @@ function concatAttacher() {
 }
 
 function snitchUpdater(event) {
-  console.log(event);
   if (event.type == 'mouseover') {
     window.snitch.textContent = "IN";
   }
@@ -48,4 +47,13 @@ function snitchUpdater(event) {
 function snitchAttacher() {
   window.mousewatcher.addEventListener( "mouseover", snitchUpdater );
   window.mousewatcher.addEventListener( "mouseout", snitchUpdater );
+}
+
+function reportUpdater(event) {
+  window.report.textContent = "x: " + event.screenX + " y: "+event.screenY;
+}
+
+
+function reportAttacher() {
+  window.mousereporter.addEventListener( "mousemove", reportUpdater );
 }

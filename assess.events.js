@@ -198,3 +198,46 @@ QUnit.test(
 
       }
 );
+
+
+
+
+
+QUnit.test(
+
+    "The div `mousereporter` contains a paragraph `report`.  When the mouse is anywhere over `mousereporter`, the `report` paragraph should say be updated to include the position of the mouse within the screen, thus `x: 000 y: 000`.  Write a function `reportAttacher` that associates the the mouseover event with a `reporterUpdater` function.  Also write the reporterUpdater function (you may wish to base this on `snitchUpdater`) which receives an single event object parameter and used the data in this object to update populate the `report` element.  Hint: there are screenX and screenY properties in the event object.",
+
+    function(assert) {
+
+        assert.ok(
+            typeof reportAttacher === "function",
+            "Create a `reportAttacher` function."
+        );
+
+        assert.ok(
+            typeof reportUpdater === "function",
+            "Create a `reportUpdater` function."
+        );
+
+        reportAttacher();
+
+        window.mousereporter.dispatchEvent( new MouseEvent("mousemove", {screenX: 10, screenY: 20}) );
+
+        assert.equal(
+            window.report.textContent,
+            "x: 10 y: 20",
+            "After a `mousemove` event, the `report` text should reflect mouse position x10y20."
+        );
+
+        window.mousereporter.dispatchEvent( new MouseEvent("mousemove", {screenX: 11, screenY: 21}) );
+
+        assert.equal(
+            window.report.textContent,
+            "x: 11 y: 21",
+            "After a `mousemove` event, the `report` text should reflect mouse position x11y21."
+        );
+
+        window.mousereporter.parentElement.classList.add("done");
+
+      }
+);
