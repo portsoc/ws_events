@@ -300,3 +300,60 @@ QUnit.test(
 
       }
 );
+
+
+
+
+
+QUnit.test(
+
+    "The input field `newid` is meant for the user to type an ID of an HTML element; IDs cannot have spaces in them, so the field needs to report when the user has a space in there. Write a function `idValidationAttacher` that gives the `newid` input field an event handler that checks the value whenever it has changed (use the `input` event). If the value contains any space, the event handler will add a class `invalid` to the `newid` input element, so that an error message shows.",
+
+    function(assert) {
+
+        assert.ok(
+            typeof idValidationAttacher === "function",
+            "Create a `idValidationAttacher` function."
+        );
+
+        window.newid.value = 'Obi van Kenobi';
+        window.newid.dispatchEvent( new InputEvent("input") );
+
+        assert.ok(
+          window.getComputedStyle(window.newiderror).display == "none" &&
+            !window.newid.classList.contains('invalid'),
+          "Before calling `idValidationAttacher`, the error never shows."
+        );
+
+        idValidationAttacher();
+
+        window.newid.dispatchEvent( new InputEvent("input") );
+
+        assert.ok(
+          window.getComputedStyle(window.newiderror).display == "inline" &&
+            window.newid.classList.contains('invalid'),
+          "After calling `idValidationAttacher`, the error gets triggered."
+        );
+
+        window.newid.value = 'test';
+        window.newid.dispatchEvent( new InputEvent("input") );
+
+        assert.ok(
+          window.getComputedStyle(window.newiderror).display == "none" &&
+            !window.newid.classList.contains('invalid'),
+          "If the value does not have any spaces, the error should be hidden."
+        );
+
+        window.newid.value = ' Khaaaaan!';
+        window.newid.dispatchEvent( new InputEvent("input") );
+
+        assert.ok(
+          window.getComputedStyle(window.newiderror).display == "inline" &&
+            window.newid.classList.contains('invalid'),
+          "Even with a space as the first character, the error should show."
+        );
+
+        window.newids.classList.add("done");
+
+      }
+);

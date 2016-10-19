@@ -43,6 +43,25 @@
     border: solid #999999 thin;
   }
 
+  #newiderror {
+    color: #800;
+    font-size: 80%;
+    display: none;
+  }
+
+  #newid {
+    font-size: 1em;
+    font-family: inherit;
+  }
+
+  #newid.invalid {
+    box-shadow: 0 0 .1em .1em red;
+  }
+
+  #newid.invalid + #newiderror {
+    display: inline;
+  }
+
 </style>
 
 <body>
@@ -83,6 +102,11 @@
     <section id=reportingmice>
         <h1>The Mouse Reporter</h1>
         <div id=mousereporter><p id=report></p></div>
+    </section>
+
+    <section id=newids>
+        <h1>Enter new ID: </h1>
+        <p>new ID (no spaces allowed): <input id=newid> <span id=newiderror>(An ID cannot have any spaces!)</span></p>
     </section>
 
 
