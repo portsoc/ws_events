@@ -158,3 +158,43 @@ QUnit.test(
 
       }
 );
+
+
+
+
+
+
+
+QUnit.test(
+
+    "The div `mousewatcher` contains a paragraph `snitch`.  When the mouse is pointing at `mousewatcher`, the `snitch` paragraph should say `IN`, otherwise it should say `OUT`.  Write a function `snitchAttacher`.  `snitchAttacher` should associate the (provided) `snitchUpdater` function with the `mouseover` and `mouseout` events.",
+
+    function(assert) {
+
+        assert.ok(
+            typeof snitchAttacher === "function",
+            "Create a snitchAttacher function."
+        );
+
+        snitchAttacher();
+
+        window.mousewatcher.dispatchEvent( new MouseEvent("mouseover") );
+
+        assert.equal(
+            window.snitch.textContent,
+            "IN",
+            "After a `mousein` event, the `snitch` text should be `IN`."
+        );
+
+        window.mousewatcher.dispatchEvent( new MouseEvent("mouseout") );
+
+        assert.equal(
+            window.snitch.textContent,
+            "OUT",
+            "After a `mousein` event, the `snitch` text should be `OUT`."
+        );
+
+        window.mousewatcher.parentElement.classList.add("done");
+
+      }
+);

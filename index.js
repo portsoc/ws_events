@@ -33,3 +33,19 @@ function concatAttacher() {
   window.in1.addEventListener("change", doConcat);
   window.in2.addEventListener("change", doConcat);
 }
+
+function snitchUpdater(event) {
+  console.log(event);
+  if (event.type == 'mouseover') {
+    window.snitch.textContent = "IN";
+  }
+  if (event.type == 'mouseout') {
+    window.snitch.textContent = "OUT";
+  }
+}
+
+
+function snitchAttacher() {
+  window.mousewatcher.addEventListener( "mouseover", snitchUpdater );
+  window.mousewatcher.addEventListener( "mouseout", snitchUpdater );
+}
