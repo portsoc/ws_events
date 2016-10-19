@@ -11,11 +11,70 @@ QUnit.test("Change the id method in index.js to return your student ID.",
     }
 );
 
+// create a copy of the original consoel.log function
+console.originalLog = console.log;
+
+// replace console.log with a veneer function that updates a global variable
+// with whatever the parameters of the most recent  call to console.log were.
+console.log = function(...x) {
+  console.originalLog(x);
+  window.lastLog = x;
+}
+
 QUnit.module("Events");
 
 function lovelyToggle() {
     window.thisisalovelyparagraph.classList.toggle("lovely");
 }
+
+
+
+QUnit.test(
+
+    "Create a function `targetTextToConsole` that takes one parameter `event` and writes the text content of `event.target` to the console.  Create a second function tttcAttacher.  tttcAttacher should set `targetTextToConsole` as the event handler for the click event on `button0` - thus when the `Click Me` button is pressed, `Click Me` should appear on the console,",
+
+    function(assert) {
+
+        assert.ok(
+            typeof targetTextToConsole === "function",
+            "Create a `targetTextToConsole` function."
+        );
+
+        assert.ok(
+            typeof tttcAttacher === "function",
+            "Create a `tttcAttacher` function."
+        );
+
+        tttcAttacher();
+
+        window.button0.dispatchEvent( new MouseEvent("click"));
+
+        assert.equal(
+            window.lastLog,
+            "Click Me",
+            "Clicking the button should put the button's text on the console."
+        );
+
+        window.button0.textContent = "Surprise!";
+        window.button0.dispatchEvent( new MouseEvent("click"));
+        assert.equal(
+            window.lastLog,
+            "Surprise!",
+            "Clicking the button should put the button's text on the console (this time it's `Surprise!`)."
+        );
+
+        window.button0.textContent = "Click Me";
+        window.button0.dispatchEvent( new MouseEvent("click"));
+        assert.equal(
+            window.lastLog,
+            "Click Me",
+            "Clicking the button should put the button's text on the console (now it's `Click Me` again)."
+        );
+
+        window.button0.parentElement.classList.add("done");
+
+      }
+);
 
 
 QUnit.test(

@@ -16,22 +16,12 @@ function id() {
 }
 
 
-function lovelyButtonAttacher() {
-  window.button1.addEventListener("click", lovelyToggle);
+function exampleAttacher() {
+  window.exampleid.addEventListener("click", exampleEventHandler);
 }
 
-function lovelyParaAttacher() {
-  window.thisisalovelyparagraph.addEventListener("click", lovelyToggle);
-}
-
-function doConcat() {
-  window.out1.textContent = window.in1.value + window.in2.value;
-
-}
-
-function concatAttacher() {
-  window.in1.addEventListener("change", doConcat);
-  window.in2.addEventListener("change", doConcat);
+function exampleEventHandler(event) {
+    console.log("This is a", event.type, "event.");
 }
 
 function snitchUpdater(event) {
@@ -41,19 +31,4 @@ function snitchUpdater(event) {
   if (event.type == 'mouseout') {
     window.snitch.textContent = "OUT";
   }
-}
-
-
-function snitchAttacher() {
-  window.mousewatcher.addEventListener( "mouseover", snitchUpdater );
-  window.mousewatcher.addEventListener( "mouseout", snitchUpdater );
-}
-
-function reportUpdater(event) {
-  window.report.textContent = "x: " + event.screenX + " y: "+event.screenY;
-}
-
-
-function reportAttacher() {
-  window.mousereporter.addEventListener( "mousemove", reportUpdater );
 }
