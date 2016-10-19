@@ -23,3 +23,13 @@ function lovelyButtonAttacher() {
 function lovelyParaAttacher() {
   window.thisisalovelyparagraph.addEventListener("click", lovelyToggle);
 }
+
+function doConcat() {
+  window.out1.textContent = window.in1.value + window.in2.value;
+
+}
+
+function concatAttacher() {
+  window.in1.addEventListener("change", doConcat);
+  window.in2.addEventListener("change", doConcat);
+}

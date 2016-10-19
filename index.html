@@ -8,10 +8,14 @@
 </head>
 
 <style>
-  .done {
+  section {
       padding: 1rem;
-      border: solid #990099 thin;
-      border-left: solid #990099 1rem;
+      border: solid #999999 thin;
+      border-left: solid #999999 1rem;
+  }
+
+  .done {
+      border-color: #990099;
   }
 
   .lovely {
@@ -37,9 +41,12 @@
         <button id=button1>Lovely Toggle</button>
     </section>
 
-    <section>
-                  <input type=text placeholder="type something here"></input>
-        <button id=button2>Log it!</button>
+    <section id=conzone>
+        <h1>The Concatenation Zone</h1>
+        <p>What is your first name? <input id=in1 placeholder="first"></input></p>
+        <p>What is yout family name?<input id=in2 placeholder="second"></input></p>
+        <p>Hello <span id=out1></span></p>
+        <p>NB: you have to press enter or move the cursor to the next input field to make the content change.</p>
     </section>
 
 

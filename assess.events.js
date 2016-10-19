@@ -53,8 +53,6 @@ QUnit.test(
             "After the second click event is fired, the element has no class`."
         );
 
-
-
         window.thisisalovelyparagraph.parentElement.classList.add("done");
 
       }
@@ -98,6 +96,65 @@ QUnit.test(
 
 
         window.button1.parentElement.classList.add("done");
+
+      }
+);
+
+
+
+
+QUnit.test(
+
+    "Create a function `concatAttacher` that attaches an event listener to the `in1` and `in2` input elements.  Write an event handler function that fulfills the following requirement: when `in1` and `in2` change, their content should be joined together and placed inside the `out1` element, such that if you entered `Darth` and `Vader` the content of `out1` would be `DarthVader`.",
+
+    function(assert) {
+
+        assert.ok(
+            typeof concatAttacher === "function",
+            "Create a concatAttacher function."
+        );
+
+        concatAttacher();
+
+        assert.equal(
+            window.out1.textContent,
+            window.in1.value + window.in2.value,
+            "Before the first change, out1 has no text."
+        );
+
+        window.in1.value = "Darth";
+        window.in1.dispatchEvent( new Event("change") );
+        window.in2.value = "Vader";
+        window.in2.dispatchEvent( new Event("change") );
+
+        assert.equal(
+            window.out1.textContent,
+            "DarthVader",
+            "After the first change, out1 reads `DarthVader`."
+        );
+
+        window.in2.value = "Tyrannus";
+        window.in2.dispatchEvent( new Event("change") );
+
+        assert.equal(
+            window.out1.textContent,
+            "DarthTyrannus",
+            "After the first change, out1 reads `DarthTyrannus`."
+        );
+
+
+        window.in1.value = "Luke";
+        window.in1.dispatchEvent( new Event("change") );
+        window.in2.value = "Skywalker";
+        window.in2.dispatchEvent( new Event("change") );
+
+        assert.equal(
+            window.out1.textContent,
+            "LukeSkywalker",
+            "After the first change, out1 reads `LukeSkywalker`."
+        );
+
+        window.conzone.classList.add("done");
 
       }
 );
