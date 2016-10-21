@@ -317,7 +317,7 @@ QUnit.test(
         );
 
         window.newid.value = 'Obi van Kenobi';
-        window.newid.dispatchEvent( new InputEvent("input") );
+        window.newid.dispatchEvent( new Event("input") );
 
         assert.ok(
           window.getComputedStyle(window.newiderror).display == "none" &&
@@ -327,7 +327,7 @@ QUnit.test(
 
         idValidationAttacher();
 
-        window.newid.dispatchEvent( new InputEvent("input") );
+        window.newid.dispatchEvent( new Event("input") );
 
         assert.ok(
           window.getComputedStyle(window.newiderror).display == "inline" &&
@@ -336,7 +336,7 @@ QUnit.test(
         );
 
         window.newid.value = 'test';
-        window.newid.dispatchEvent( new InputEvent("input") );
+        window.newid.dispatchEvent( new Event("input") );
 
         assert.ok(
           window.getComputedStyle(window.newiderror).display == "none" &&
@@ -345,7 +345,7 @@ QUnit.test(
         );
 
         window.newid.value = ' Khaaaaan!';
-        window.newid.dispatchEvent( new InputEvent("input") );
+        window.newid.dispatchEvent( new Event("input") );
 
         assert.ok(
           window.getComputedStyle(window.newiderror).display == "inline" &&
