@@ -5,16 +5,29 @@
  * else you have to do, adding functions to the end of this
  * file as necessary.
  *
- * NB: all code you write this year shoudl use strict mode, so
+ * NB: all code you write this year should use strict mode, so
  * we've enabled that by default with the first line of code.
  */
 
 'use strict';
 
 function id() {
-    return "UP000000";
+    return "Replace This With Your Student ID";
+    // e.g. return "UP654321";
 }
 
+function fn() {
+    return "Replace This With Your First Name";
+}
+
+function sn() {
+    return "Replace This With Your Surname";
+}
+
+/**
+ * Utility functions for reference that may be used by tests
+ * for various reasons.
+ */
 
 function exampleAttacher() {
   window.exampleid.addEventListener("click", exampleEventHandler);
@@ -24,11 +37,16 @@ function exampleEventHandler(event) {
     console.log("This is a", event.type, "event.");
 }
 
+// used by snitchAttacher
 function snitchUpdater(event) {
-  if (event.type == 'mouseover') {
-    window.snitch.textContent = "IN";
-  }
-  if (event.type == 'mouseout') {
-    window.snitch.textContent = "OUT";
-  }
+  window.snitch.textContent = (event.type == 'mouseover' ? "IN" : "OUT");
 }
+
+// used by lovelyParaAttacher
+function lovelyToggle() {
+    window.thisisalovelyparagraph.classList.toggle("lovely");
+}
+
+/**
+ * Add your functions here...
+ */
