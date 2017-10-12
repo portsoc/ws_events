@@ -265,7 +265,7 @@ QUnit.test(
 
 QUnit.test(
 
-    "The div `mousereporter` contains a paragraph `report`.  When the mouse is anywhere over `mousereporter`, the `report` paragraph should be updated to include the position of the mouse within the screen, thus `x: 000 y: 000`.  Write a function `reportAttacher` that associates the mousemove event with a `reporterUpdater` function.  Also write the reporterUpdater function (you may wish to base this on `snitchUpdater`) which receives an single event object parameter and used the data in this object to update populate the `report` element.  Hint: there are screenX and screenY properties in the event object.",
+    "The div `mousereporter` contains a paragraph `report`.  When the mouse is anywhere over `mousereporter`, the `report` paragraph should be updated to include the position of the mouse within the screen, thus `x: 000 y: 000`.  Write a function `reportAttacher` that associates the mousemove event with a `reportUpdater` function.  Also write the `reportUpdater` function (you may wish to base this on `snitchUpdater`) which receives an single event object parameter and used the data in this object to update populate the `report` element.  Hint: there are screenX and screenY properties in the event object.",
 
     function(assert) {
 
