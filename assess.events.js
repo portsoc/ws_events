@@ -1,31 +1,23 @@
-"use strict";
-QUnit.module("Basics");
+// we need to hijack the consolelog funciton
+// in order to capture what is written to it, so...
 
-QUnit.test("Change the id method in index.js to return your student ID.",
-    function(assert) {
-        assert.notEqual(
-            id(),
-            "UP000000",
-            "The ID function should return your student ID."
-        );
-    }
-);
-
-// create a copy of the original consoel.log function
+// create a copy of the original console.log function
 console.originalLog = console.log;
 
-// replace console.log with a veneer function that updates a global variable
-// with whatever the parameters of the most recent  call to console.log were.
+// replace console.log with a veneer function
+// that updates a global variable with whatever
+// the parameters of the most recent call to
+// console.log were.
 console.log = function(...x) {
   console.originalLog(...x);
   window.lastLog = x;
 }
 
+
+
 QUnit.module("Events");
 
-function lovelyToggle() {
-    window.thisisalovelyparagraph.classList.toggle("lovely");
-}
+
 
 
 
@@ -79,7 +71,7 @@ QUnit.test(
 
 QUnit.test(
 
-    "Create a function `lovelyParaAttacher` that attaches an event listener to the `thisisalovelyparagraph` element.  When the paragraph is clicked the `lovelyToggle` function should be invoked.  You can find lovelyToggle in the `assess.events.js` file.",
+    "Create a function `lovelyParaAttacher` that attaches an event listener to the `thisisalovelyparagraph` element.  When the paragraph is clicked the (provided) `lovelyToggle` function should be invoked.",
 
     function(assert) {
 
@@ -181,7 +173,7 @@ QUnit.test(
         //     window.in1.value + window.in2.value,
         //     "Before the first change, out1 has no text."
         // );
-
+//
         window.in1.value = "Darth";
         window.in1.dispatchEvent( new Event("change") );
         window.in2.value = "Vader";
@@ -323,7 +315,7 @@ QUnit.test(
         assert.ok(
           window.getComputedStyle(window.newiderror).display == "none" &&
             !window.newid.classList.contains('invalid'),
-          "Before calling `idValidationAttacher`, the error never shows."
+          "Before calling `idValidationAttacher` the classlist should not contain `invalid`."
         );
 
         idValidationAttacher();
@@ -333,7 +325,7 @@ QUnit.test(
         assert.ok(
           window.getComputedStyle(window.newiderror).display == "inline" &&
             window.newid.classList.contains('invalid'),
-          "After calling `idValidationAttacher`, the error gets triggered."
+          "After calling `idValidationAttacher` the classlist should contain `invalid`."
         );
 
         window.newid.value = 'test';
@@ -342,7 +334,7 @@ QUnit.test(
         assert.ok(
           window.getComputedStyle(window.newiderror).display == "none" &&
             !window.newid.classList.contains('invalid'),
-          "If the value does not have any spaces, the error should be hidden."
+          // "If the value does not have any spaces, the error should be hidden."
         );
 
         window.newid.value = ' Khaaaaan!';
@@ -351,7 +343,7 @@ QUnit.test(
         assert.ok(
           window.getComputedStyle(window.newiderror).display == "inline" &&
             window.newid.classList.contains('invalid'),
-          "Even with a space as the first character, the error should show."
+          "Even with a space as the first character, the classlist should contain `invalid`."
         );
 
         window.newids.classList.add("done");
