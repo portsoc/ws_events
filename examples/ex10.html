@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<title>Propagation Example</title>
-<link href="style.css" rel="stylesheet" />
+<title>evt10 Propagation Example</title>
 
 <style>
 	div, div * {
-		background: rgba(0,30,100, 0.5);
+		background: rgba(0, 0,100, 0.5);
 		padding: 1em;
 		border: black thin dashed;
 		color: white;
@@ -25,26 +24,38 @@
 
 <div id="veg">
 	<p id="cucumber">Cucumber</p>
-	<p id="squash">Butternut Squash</p>
+	<p id="tomato">Carrot</p>
 </div>
 
 
 <script>
-	/**
+  /**
 	 * event.currentTarget = the element with the eventHandler
 	 * event.target = the element on which the event occurred.
 	 */
 	function report(eventObject) {
 		console.log("Target", eventObject.target);
-		console.log("Current Target", eventObject.currentTarget);
+		console.log("CurTgt", eventObject.currentTarget);
 	}
 
-	window.addEventListener("load", () => {
-		// individual listeners
-		banana.addEventListener("click", report);
-		apple.addEventListener("click", report);
+  function init() {
+    // this happens after load so we guarantee these elements
+    // are there when we try to get a handle on them
+    const banana = document.querySelector("#banana");
+    const apple = document.querySelector("#apple");
+    const veg = document.querySelector("#veg");
 
-		// a group listener
-		veg.addEventListener("click", report);
-	});
+    // individual listeners
+    banana.addEventListener("click", report);
+    apple.addEventListener("click", report);
+
+    // a group listener
+    veg.addEventListener("click", report);
+  }
+
+  /**
+   * Document needs to have loaded before we can
+   * select elements in the doc.
+   */
+	window.addEventListener("load", init);
 </script>
