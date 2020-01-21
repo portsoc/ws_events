@@ -1,12 +1,12 @@
 /*!
- * QUnit 2.4.0
+ * QUnit 2.9.2
  * https://qunitjs.com/
  *
  * Copyright jQuery Foundation and other contributors
  * Released under the MIT license
  * https://jquery.org/license
  *
- * Date: 2017-07-08T15:20Z
+ * Date: 2019-02-21T22:49Z
  */
 
 /** Font Family and Sizes */
@@ -359,7 +359,6 @@
 	color: #710909;
 	background-color: #FFF;
 	border-left: 10px solid #EE5757;
-	white-space: pre;
 }
 
 #qunit-tests > li:last-child {
