@@ -96,7 +96,7 @@ test(
 
     function(assert) {
 
-      if (assert.functionExists( 'lovelyButtonAttacher' )) return;
+      if (!assert.functionExists( 'lovelyButtonAttacher' )) return;
       lovelyButtonAttacher();
 
       assert.equal(
